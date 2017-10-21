@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fanchen.mapper.BookMapper">
+
+    <insert id="insert" parameterType="com.fanchen.pojo.Book" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO  book_date (book_name,type,cover) VALUE (#{book_name},#{type},#{cover})
+    </insert>
+
+    <update id="update" parameterType="com.fanchen.pojo.Book">
+        UPDATE book_date SET
+        author=#{author},chapter_number=#{chapter_number},last_update_time=#{last_update_time},introduction=#{introduction}
+        WHERE id = #{id}
+    </update>
+
+</mapper>
