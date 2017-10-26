@@ -3,15 +3,98 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fanchen.mapper.BookMapper">
-
+    <!--为了获取id先插入一些数据-->
     <insert id="insert" parameterType="com.fanchen.pojo.Book" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO  book_date (book_name,type,cover) VALUE (#{book_name},#{type},#{cover})
     </insert>
-
+    <!--根据id更新数据-->
     <update id="update" parameterType="com.fanchen.pojo.Book">
         UPDATE book_date SET
-        author=#{author},chapter_number=#{chapter_number},last_update_time=#{last_update_time},introduction=#{introduction}
+        author=#{author},chapter_number=#{chapter_number},last_update_time=#{last_update_time},introduction=#{introduction},
+        start_id=#{start_id},end_id=#{end_id}
         WHERE id = #{id}
     </update>
+    <!--搜索书名和作者-->
+    <select id="search" parameterType="com.fanchen.pojo.Book" resultType="com.fanchen.pojo.Book">
+        SELECT * FROM book_date WHERE book_name LIKE #{book_name} OR author LIKE #{author} LIMIT  0,20
+    </select>
+    <!--根据id搜索书-->
+    <select id="selectId" parameterType="int" resultType="com.fanchen.pojo.Book">
+        SELECT * FROM book_date WHERE id=#{id}
+    </select>
+    <!--根据id获取书章节开始和结束的位置-->
+    <select id="getEnd" parameterType="int" resultType="com.fanchen.pojo.Book">
+        SELECT id,start_id,end_id FROM book_date WHERE id=#{id}
+    </select>
+    <!--根据推荐排行-->
+    <select id="getRanking" resultType="com.fanchen.pojo.Book" parameterType="com.fanchen.pojo.RankingType">
+        SELECT id,book_name,author,cover,
+        <if test="collection != 0">
+            collection FROM book_date ORDER BY collection
+        </if>
+        <if test="click != 0">
+            click FROM book_date ORDER BY click
+        </if>
+        <if test="recommended != 0">
+            recommended FROM book_date ORDER BY recommended
+        </if>
+        <if test="last_update_time != 0">
+            last_update_time FROM book_date ORDER BY last_update_time
+        </if>
+        <if test="sort == 0">
+            DESC LIMIT 0,10
+        </if>
+        <if test="sort != 0">
+            ASC LIMIT 0,10
+        </if>
+    </select>
+
+    <!--根据类型搜索全部-->
+    <select id="getAll" resultType="com.fanchen.pojo.Book" parameterType="com.fanchen.pojo.RankingType">
+        SELECT * FROM book_date
+
+        <if test="type == 1">
+            WHERE type='玄幻'
+        </if>
+        <if test="type == 2">
+            WHERE type='都市'
+        </if>
+        <if test="type == 3">
+            WHERE type='历史'
+        </if>
+        <if test="type == 4">
+            WHERE type='武侠'
+        </if>
+        <if test="type == 5">
+            WHERE type='科幻'
+        </if>
+        <if test="type == 6">
+            WHERE type='游戏'
+        </if>
+        <if test="type == 7">
+            WHERE type='灵异'
+        </if>
+        <if test="type == 8">
+            WHERE type='军事'
+        </if>
+        <if test="method == 0">
+            ORDER BY click
+        </if>
+        <if test="method == 1">
+            ORDER BY collection
+        </if>
+        <if test="method == 2">
+           ORDER BY recommended
+        </if>
+        <if test="method == 3">
+           ORDER BY last_update_time
+        </if>
+        <if test="sort != 0">
+           ASC LIMIT 0,10
+        </if>
+        <if test="sort == 0">
+           DESC LIMIT 0,10
+        </if>
+    </select>
 
 </mapper>

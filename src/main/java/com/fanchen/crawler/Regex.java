@@ -15,6 +15,4 @@ public class Regex {
     public String getchapter="<a href=\"(\\d*.html)\"\\s?>(.*)</a>";
     //获取正文
     public String getcontent="((<div id=\"content\">)?(&nbsp;){4}[\\s\\S]*)?";
-    //获取图片
-    String get_book_img="";
 }

@@ -1,0 +1,145 @@
+.content {
+}
+
+.content-background {
+    position: fixed;
+    top: 0;
+    height: 600px;
+    width: 100%;
+    background: url("../../image/dir-bg.jpg");
+    -webkit-background-size:cover;
+    background-size:100% 600px;
+}
+
+.content-body {
+    position: relative;
+    top: 200px;
+    width: 1000px;
+    min-height: 800px;
+    background-color: #f9f9f9;
+    margin: -120px auto 0 auto;
+    z-index: 4;
+}
+
+.book-info {
+    height: 232px;
+    width: 100%;
+}
+
+.book-info-left {
+    height: 100%;
+    width: 184px;
+    padding: 20px;
+    float: left;
+}
+
+.book-info-left img {
+    height: 192px;
+    width: 144px;
+}
+
+.book-info-right {
+    float: left;
+    width: 816px;
+    height: 100%;
+    padding: 1rem 1rem;
+}
+
+.book-info-right h1 {
+    margin-top: -1px;
+}
+
+.book-info-right h1 em {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.book-info-right h1 span {
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+.book-info-right p .blue{
+    border: solid 1px #9fadc9;
+    border-radius: 10px;
+    padding: 2px 4px;
+    color: #3f5a93;
+    margin: 1rem;
+}
+.book-info-right p .red{
+    border: solid 1px #ffb0b4;
+    border-radius: 10px;
+    padding: 2px 4px;
+    color: #bf2c24;
+    margin: 1rem;
+}
+.intro{
+    font-size: 16px;
+}
+
+.book-info-right p em{
+    color: #262626;
+    font-size: 22px;
+}
+.book-info-right p cite{
+    font-size: 12px;
+    margin-right: 1rem;
+    color: #666;
+}
+.book-info-right a div{
+    float: left;
+    padding: 6px 30px;
+    margin: 10px 20px 0 0;
+    border-radius: 6px;
+}
+
+.red-button div{
+    border: solid 1px #c9302c;
+    color: #c9302c;
+}
+.blue-button div{
+    border: solid 1px #3f5a93;
+    color: #3f5a93;
+}
+
+.book-date{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    overflow: hidden;
+}
+.book-date h4{
+    margin-top: -1px;
+    font-size: 20px;
+    font-weight: 800;
+}
+.book-date p{
+    padding: 20px 40px;
+}
+h4.list-title{
+    margin: 30px 0;
+}
+.book-list{
+    position: relative;
+}
+
+.book-list li{
+    float: left;
+    display: block;
+    width: 320px;
+    height: 40px;
+    padding: 10px 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+ul a{
+    color: #333;
+    text-decoration: none;
+}
+
+ul a:hover{
+    color: #BF2C24;
+    text-decoration: none;
+}

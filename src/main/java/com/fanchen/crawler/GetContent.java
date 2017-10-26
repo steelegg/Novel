@@ -1,6 +1,7 @@
 package com.fanchen.crawler;
 
 import com.fanchen.mapper.ChapterMapper;
+import com.fanchen.pojo.Book;
 import com.fanchen.pojo.Chapter;
 
 import java.io.BufferedReader;
@@ -17,7 +18,7 @@ import java.util.regex.Pattern;
  */
 
 class GetContent {
-    void getContent(Chapter chapter, String url, BufferedReader in, URLConnection connection, Regex regex, ChapterMapper chapterMapper) {
+    void getContent(Chapter chapter, Book book, int chapter_number, String url, BufferedReader in, URLConnection connection, Regex regex, ChapterMapper chapterMapper) {
         URL realUrl = null;
         String line = null;
         StringBuilder sb = new StringBuilder();
@@ -39,6 +40,10 @@ class GetContent {
             }
             chapter.setContent(sb.toString());
             chapterMapper.insert(chapter);
+
+            if (chapter_number==1){
+                book.setStart_id(chapter.getId());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

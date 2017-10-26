@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+a, li {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.header {
+    height: 6rem;
+}
+
+.login {
+    height: 2rem;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.login-block {
+    text-align: right;
+}
+
+.login-block li {
+    display: inline;
+    padding: 0 0.5rem;
+    color: #313035;
+    font-weight: 800;
+}
+
+.menu {
+    height: 4rem;
+    background-color: #3e3d43;
+}
+
+.menu-block {
+    height: 4rem;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.menu-left {
+    text-align: center;
+    font-size: 2rem;
+    padding: 1rem 0;
+    width: 20%;
+    height: 100%;
+    float: left;
+    background-color: #313035;
+
+}
+
+.menu-left a {
+    color: #FFF;
+}
+
+.menu-left a :hover{
+    color: #FFF;
+    text-decoration: none;
+}
+
+.menu-right {
+    width: 80%;
+    height: 100%;
+    padding: 1rem 0;
+    float: left;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    background-color: #3e3d43;
+
+}
+
+.menu-right li {
+    display: inline;
+    list-style: none;
+    font-size: 2rem;
+    padding: 0 3rem;
+}
+
+.menu-right a {
+    text-decoration: none;
+}
+
+.header-input {
+    float: right;
+}
+
+.header-input-text {
+    height: 2rem;
+    border: hidden;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    outline: none;
+    padding-left: 1rem;
+}
+
+.header-input-submit {
+    height: 2rem;
+    width: 4rem;
+    border: hidden;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    outline: none;
+}
+
+

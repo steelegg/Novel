@@ -13,19 +13,6 @@ public class Chapter {
     private String chapter_name; //章节名称
     private String content; //内容
 
-    @Override
-    public String toString() {
-        return "chapter{" +
-                "id=" + id +
-                ", book_id=" + book_id +
-                ", status=" + status +
-                ", update_time=" + update_time +
-                ", create_at=" + create_at +
-                ", chapter_name='" + chapter_name + '\'' +
-                ", content='" + content + '\'' +
-                '}';
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -80,5 +67,18 @@ public class Chapter {
 
     public String getContent() {
         return content;
+    }
+
+    @Override
+    public String toString() {
+        return "chapter{" +
+                "id=" + id +
+                ", book_id=" + book_id +
+                ", status=" + status +
+                ", update_time=" + update_time +
+                ", create_at=" + create_at +
+                ", chapter_name='" + chapter_name + '\'' +
+                ", content='" + content + '\'' +
+                '}';
     }
 }

@@ -31,15 +31,16 @@ public class BookList {
     @Test
     public void getList() {
         int book_id;
-        int book_type;
+        int book_num;
         String line = null;
         String cover = null;
         String book_name;
+        String type;
 
         BufferedReader in = null;
         Regex regex = new Regex();
         Book book = new Book();
-        Book new_book=new Book();
+        Book new_book = new Book();
         GetChapter getchapter = new GetChapter();
         try {
 //            for(int x=1;x<339;x++){
@@ -69,18 +70,27 @@ public class BookList {
                         //m1.group(2) 是书id
                         //m1.group(3) 是书名
                         book_id = Integer.parseInt(m1.group(2));
-                        book_type = Integer.parseInt(m1.group(1));
+                        book_num = Integer.parseInt(m1.group(1));
                         book_name = m1.group(3);
-                        cover = "http://www.qb5200.org/files/article/image/" + book_type + "/" + book_id + "/" + book_id + "s.jpg";
+                        cover = "http://www.qb5200.org/files/article/image/" + book_num + "/" + book_id + "/" + book_id + "s.jpg";
+                        //输出类型
+                        type = GetType.getType(book_id, in, connection, regex);
+                        System.out.println("类型:" + type);
 
+                        if (type==null){
+                            book.setType("未知");
+                        }else{
+                            book.setType(type);
+                        }
                         book.setBook_name(book_name);
-                        book.setType(book_type);
                         book.setCover(cover);
+
                         //这里先插入数据获得返回的id
                         bookMapper.insert(book);
 
                         System.out.println("正在爬取id为" + book.getId() + "的书");
-                        new_book = getchapter.getChapter(book, book_id, in, connection, regex, chapterMapper);
+                        new_book = getchapter.getChapter(book, book_num, book_id, in, connection, regex, chapterMapper);
+
                     }
 
                     if (m2.find() && m2.group(1) != null) {

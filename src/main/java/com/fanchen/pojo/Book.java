@@ -2,7 +2,7 @@ package com.fanchen.pojo;
 
 /**
  * Created by Administrator on 2017/10/18.
- *  书类
+ * 书类
  */
 public class Book {
     private int id;
@@ -11,16 +11,16 @@ public class Book {
     private String introduction; //简介
     private String last_update_time;
     private String cover;
-    private int type;
+    private String type;
     private int status;
-    private int click;
+    private int click; //点击
     private int chapter_number;
-    private int collection;
-    private int recommended;
+    private int collection; //收藏
+    private int recommended; //推荐
     private int level;
-    private int chapter_total;
+    private int start_id;
+    private int end_id;
     private long create_at;
-
 
     @Override
     public String toString() {
@@ -31,23 +31,40 @@ public class Book {
                 ", introduction='" + introduction + '\'' +
                 ", last_update_time='" + last_update_time + '\'' +
                 ", cover='" + cover + '\'' +
-                ", type=" + type +
+                ", type='" + type + '\'' +
                 ", status=" + status +
                 ", click=" + click +
                 ", chapter_number=" + chapter_number +
                 ", collection=" + collection +
                 ", recommended=" + recommended +
                 ", level=" + level +
-                ", chapter_total=" + chapter_total +
+                ", start_id=" + start_id +
+                ", end_id=" + end_id +
                 ", create_at=" + create_at +
                 '}';
     }
 
-    public void setType(int type) {
+    public void setStart_id(int start_id) {
+        this.start_id = start_id;
+    }
+
+    public void setEnd_id(int end_id) {
+        this.end_id = end_id;
+    }
+
+    public int getStart_id() {
+        return start_id;
+    }
+
+    public int getEnd_id() {
+        return end_id;
+    }
+
+    public void setType(String type) {
         this.type = type;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
@@ -100,10 +117,6 @@ public class Book {
         this.level = level;
     }
 
-    public void setChapter_total(int chapter_total) {
-        this.chapter_total = chapter_total;
-    }
-
     public void setCreate_at(long create_at) {
         this.create_at = create_at;
     }
@@ -154,10 +167,6 @@ public class Book {
 
     public int getLevel() {
         return level;
-    }
-
-    public int getChapter_total() {
-        return chapter_total;
     }
 
     public long getCreate_at() {

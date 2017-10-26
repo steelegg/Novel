@@ -4,10 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fanchen.mapper.ChapterMapper">
 
-    <insert id="insert" parameterType="com.fanchen.pojo.Chapter">
+    <insert id="insert" parameterType="com.fanchen.pojo.Chapter" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO  chapter
         (book_id,update_time,chapter_name,content)VALUE
         (#{book_id},#{update_time},#{chapter_name},#{content})
     </insert>
+
+    <!--获取章节-->
+    <select id="getChapters" parameterType="int" resultType="com.fanchen.pojo.Chapter">
+        SELECT chapter_name,id  FROM chapter WHERE book_id=#{book_id} ORDER BY id ASC
+    </select>
+
+    <select id="getChapter" parameterType="int" resultType="com.fanchen.pojo.Chapter">
+        SELECT chapter_name,content,id,book_id FROM chapter WHERE id=#{id}
+    </select>
 
 </mapper>

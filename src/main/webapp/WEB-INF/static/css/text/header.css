@@ -1,0 +1,90 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+a, li {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.header {
+    position: relative;
+    height: 6rem;
+    z-index: 1;
+}
+
+.login {
+    padding: 6px 0 0 0;
+    font-size: 12px;
+    height: 2rem;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.login-block {
+    text-align: right;
+}
+
+.login-block li {
+    display: inline;
+    padding: 0 0.5rem;
+    color: #313035;
+    font-weight: 800;
+}
+.menu{
+    width: 100%;
+    background-color: #3e3d43;
+}
+
+.menu-a{
+    height: 2rem;
+    padding: 1rem 0;
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    background-color: #3e3d43;
+}
+
+
+.menu-a li {
+    font-size: 2rem;
+    display: inline;
+    padding: 0 2rem;
+
+}
+.menu-a a:hover{
+    text-decoration: none;
+    box-shadow: 0 3px 0 #FFF;
+}
+
+.header-input {
+    float: right;
+    z-index: 2;
+}
+
+.header-input-text {
+    height: 2rem;
+    border: hidden;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    outline: none;
+    padding-left: 1rem;
+}
+
+.header-input-submit {
+    height: 2rem;
+    width: 4rem;
+    border: hidden;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    outline: none;
+}
+
+
