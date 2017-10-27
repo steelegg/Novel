@@ -1,0 +1,27 @@
+.footer {
+    clear: both;
+    margin-top: 40px;
+    height: 100px;
+    width: 100%;
+    background-color: #313035;
+    z-index: 5;
+    position: relative;
+    top: 400px;
+}
+
+.footer-block {
+    height: 100%;
+    width: 1000px;
+    background-color: #313035;
+    margin: 0 auto;
+    text-align: center;
+    color: #cccccc;
+}
+
+.footer-block h4{
+    font-weight: 100;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 20px;
+    color: #cccccc;
+}

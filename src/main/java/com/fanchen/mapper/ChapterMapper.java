@@ -1,6 +1,5 @@
 package com.fanchen.mapper;
 
-import com.fanchen.pojo.Book;
 import com.fanchen.pojo.Chapter;
 
 import java.util.List;

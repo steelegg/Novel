@@ -22,15 +22,12 @@ public class IndexController {
     @Autowired
     @SuppressWarnings("all")
     BookMapper bookMapper;
-    @Autowired
-    @SuppressWarnings("all")
-    ChapterMapper chapterMapper;
 
     @RequestMapping("/")
     public ModelAndView index(){
         ModelAndView mv=new ModelAndView();
-        //点击最多
         RankingType rankingType=new RankingType();
+        //点击最多
         rankingType.setMethod(0);
         List<Book> click= bookMapper.getAll(rankingType);
         mv.addObject("click",click);

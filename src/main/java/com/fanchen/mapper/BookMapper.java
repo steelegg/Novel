@@ -15,7 +15,6 @@ public interface BookMapper {
     List<Book> search(Book book);
     Book selectId(int id);
     Book getEnd(int id);
+    int sum(RankingType rankingType);
     List<Book> getAll(RankingType rankingType);
-    List<Book> getRanking(RankingType rankingType);
-
 }

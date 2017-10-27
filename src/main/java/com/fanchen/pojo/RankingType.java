@@ -7,6 +7,28 @@ public class RankingType {
     private int type;
     private int method;
     private int sort;
+    private int page;
+    private int ranking;
+
+    @Override
+    public String toString() {
+        return "RankingType{" +
+                "type=" + type +
+                ", method=" + method +
+                ", sort=" + sort +
+                ", page=" + page +
+                ", ranking=" + ranking +
+                '}';
+    }
+
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
+    }
+
+    public int getRanking() {
+
+        return ranking;
+    }
 
     public void setType(int type) {
         this.type = type;
@@ -32,13 +54,13 @@ public class RankingType {
     public int getType() {
         return type;
     }
-
-    @Override
-    public String toString() {
-        return "RankingType{" +
-                "type=" + type +
-                ", method=" + method +
-                ", sort=" + sort +
-                '}';
+    public void setPage(int page) {
+        this.page = page;
     }
+
+    public int getPage() {
+
+        return page;
+    }
+
 }

@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2017/10/25.
+ *
  */
 @Controller
 public class getAllController {
@@ -22,41 +23,47 @@ public class getAllController {
     private BookMapper bookMapper;
 
     @RequestMapping("/all")
-    public String getAll(String t, String m, String s, Model model) {
+    public String getAll(String t, String m, String s, String p, Model model) {
         RankingType rankingType = new RankingType();
 
-        if (t != null && m != null && s != null) {
-            System.out.println("得到了三个参数");
+        if (t != null && m != null && s != null && p != null) {
+            System.out.println("得到了四个参数");
             rankingType.setType(Integer.parseInt(t));
             rankingType.setMethod(Integer.parseInt(m));
             rankingType.setSort(Integer.parseInt(s));
+            rankingType.setPage(Integer.parseInt(p));
             List<Book> book = bookMapper.getAll(rankingType);
+            int max = bookMapper.sum(rankingType);
+            if (max % 10 != 0) {
+                max = (max - (max % 10)) + 10;
+            }
             model.addAttribute("book", book);
-            model.addAttribute("type",t);
-            model.addAttribute("method",m);
-            model.addAttribute("sort",s);
+            model.addAttribute("type", t);
+            model.addAttribute("method", m);
+            model.addAttribute("sort", s);
+            model.addAttribute("page", p);
+            model.addAttribute("max", max);
+            model.addAttribute("num", book.size());
+
             return "result";
         }
 
-        if (t != null && m != null) {
+        if (t != null && p != null) {
             System.out.println("得到了两个参数");
             rankingType.setType(Integer.parseInt(t));
-            rankingType.setSort(Integer.parseInt(m));
+            rankingType.setPage(Integer.parseInt(p));
             List<Book> book = bookMapper.getAll(rankingType);
+            int max = bookMapper.sum(rankingType);
+            if (max % 10 != 0) {
+                max = (max - (max % 10)) + 10;
+            }
             model.addAttribute("book", book);
-            model.addAttribute("type",t);
+            model.addAttribute("type", t);
+            model.addAttribute("page", p);
+            model.addAttribute("max", max);
+            model.addAttribute("num", book.size());
             return "result";
         }
-
-        if (t != null) {
-            System.out.println("得到了一个参数");
-            rankingType.setType(Integer.parseInt(t));
-            List<Book> book = bookMapper.getAll(rankingType);
-            model.addAttribute("book", book);
-            model.addAttribute("type",t);
-            return "result";
-        }
-
         return "result";
     }
 }

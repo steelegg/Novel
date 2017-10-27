@@ -1,0 +1,88 @@
+
+.content {
+    background: url("../../image/list-bg.jpg") center;
+    background-size: cover;
+}
+
+.content-block {
+    position: relative;
+    margin: 0 auto;
+    width: 1000px;
+    height: 800px;
+}
+
+.login {
+    position: relative;
+    top: 30%;
+    margin-top: -100px;
+    height: 300px;
+    width: 400px;
+}
+
+.login input {
+    height: 50px;
+    width: 360px;
+    margin: 15px 20px;
+    border: solid 2px #268ff6;
+    border-radius: 20px;
+    outline: none;
+    padding-left: 10px;
+    background-color: #dee6ff;
+}
+.login input:hover{
+    width: 400px;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+
+.login button {
+    width: 180px;
+    height: 50px;
+    float: left;
+    border-radius: 10px;
+    outline: none;
+    opacity: .9;
+}
+
+.but-block {
+    width: 360px;
+    height: 50px;
+    margin: 14px auto;
+}
+
+.footer {
+    clear: both;
+    margin-top: -40px;
+    height: 100px;
+    width: 100%;
+    background-color: #313035;
+    z-index: 5;
+}
+
+.footer-block {
+    height: 100%;
+    width: 1000px;
+    background-color: #313035;
+    margin: 0 auto;
+    text-align: center;
+    color: #cccccc;
+}
+
+.footer-block h4 {
+    text-align: center;
+    padding-top: 20px;
+    color: #cccccc;
+}
+
+.left-but{
+    border: solid 2px #268ff6;
+    background-color: #dee6ff;
+}
+
+.right-but {
+    border: solid 2px #dee6ff;
+    background-color: #dee6ff;
+}
