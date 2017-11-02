@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -12,10 +13,10 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script>
         function judge() {
-            var number = document.getElementById("number").value;
+            var mobile = document.getElementById("mobile").value;
             var password = document.getElementById("password").value;
             try {
-                if (number == "") {
+                if (mobile == "") {
                     throw "请输入账号";
                 }
                 if (password==""){
@@ -35,30 +36,16 @@
                 <input class="header-input-text" type="text" placeholder="请输入书名或作者名...">
                 <input class="header-input-submit" value="搜索" type="submit">
             </form>
-            <a href="/">
-                <li>首页</li>
-            </a>
-            <a href="/all?t=1">
-                <li>玄幻</li>
-            </a>
-            <a href="/all?t=2">
-                <li>都市</li>
-            </a>
-            <a href="/all?t=4">
-                <li>武侠</li>
-            </a>
-            <a href="/all?t=5">
-                <li>科幻</li>
-            </a>
-            <a href="/all?t=3">
-                <li>历史</li>
-            </a>
-            <a href="/all?t=7">
-                <li>灵异</li>
-            </a>
-            <a href="/all?t=0">
-                <li>全部</li>
-            </a>
+           <ol>
+               <li><a href="/">首页</a></li>
+               <li><a href="/all?t=1&p=0">玄幻</a></li>
+               <li><a href="/all?t=2&p=0">都市</a></li>
+               <li><a href="/all?t=3&p=0">历史</a></li>
+               <li><a href="/all?t=4&p=0">武侠</a></li>
+               <li><a href="/all?t=5&p=0">科幻</a></li>
+               <li><a href="/all?t=7&p=0">灵异</a></li>
+               <li><a href="/all?t=0&p=0">全部</a></li>
+           </ol>
         </div>
     </div>
 </div>
@@ -66,11 +53,11 @@
 <div class="content">
     <div class="content-block">
         <div class="login">
-            <form>
-                <input id="number" type="text" placeholder="请输入账号" /><br />
-                <input id="password" type="password" placeholder="请输入密码"/>
+            <form action="/l/login" method="post">
+                <input id="mobile" type="text" name="mob" placeholder="请输入账号" /><br />
+                <input id="password" type="password" name="pwd" placeholder="请输入密码"/>
                 <div class="but-block">
-                    <button class="left-but" type="button" onclick="judge()">登录</button>
+                    <button class="left-but" type="submit" onclick="judge()">登录</button>
                     <button class="right-but" type="button" onclick="window.location.href='/r'">注册</button>
                 </div>
             </form>

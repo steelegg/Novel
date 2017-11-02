@@ -22,11 +22,21 @@
     <mvc:default-servlet-handler/>
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
 
+    <!--拦截器start-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+            <mvc:mapping path="/u/**" />
+            <bean class="com.fanchen.util.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
 
 </beans>

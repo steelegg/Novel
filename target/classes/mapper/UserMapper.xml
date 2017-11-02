@@ -6,5 +6,7 @@
     <insert id="insert" parameterType="User"  keyProperty="id" useGeneratedKeys="true">
         INSERT INTO user (mobile,password) VALUE (#{mobile},#{password})
     </insert>
-
+    <select id="selectUser" parameterType="User" resultType="User" >
+        SELECT id,name,mobile,password FROM user WHERE mobile=#{mobile}
+    </select>
 </mapper>

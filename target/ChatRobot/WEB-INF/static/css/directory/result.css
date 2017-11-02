@@ -26,6 +26,10 @@ ul a {
     padding: 20px 20px;
 }
 
+.result-content {
+    min-height: 600px;
+}
+
 .result-content-li {
     height: 162px;
     list-style: none;
@@ -94,13 +98,14 @@ ul a {
     margin: 20px 0 0 10px;
 }
 
-.result-content-right p a {
+.result-content-right p a ,.result-content-right p button{
     padding: 6px 16px;
     margin: 0 10px;
     border-radius: 10px;
     text-decoration: none;
+    background: none;
+    outline:none;
 }
-
 .red-but {
     color: #bf2c24;
     border: solid 1px #bf2c24;
@@ -112,6 +117,35 @@ ul a {
     color: #2e6da4;
     border: solid 1px #2e6da4;
 }
+
 .blue-but:hover{
-    color: #2e6da4;
+    background-color: #cccccc;
+}
+
+/*翻页按钮*/
+.dw-page,.up-page{
+    margin-top: 60px;
+    display: block;
+    width: 130px;
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 10px;
+    color: #313035;
+    border: solid 2px #313035;
+}
+
+.dw-page:hover,.up-page:hover{
+    color: #313035;
+    background-color: #cccccc;
+    text-decoration: none;
+}
+
+.up-page {
+    margin-left: 80px;
+    float: left;
+}
+
+.dw-page {
+    margin-right: 80px;
+    float: right;
 }

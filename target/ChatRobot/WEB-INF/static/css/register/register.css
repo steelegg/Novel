@@ -30,7 +30,7 @@
     background-color: #dee6ff;
 }
 
-#number:active, #password1:active, #password2:active {
+#number:hover, #password1:hover, #password2:hover {
     width: 400px;
     -webkit-transition: 1s;
     -moz-transition: 1s;
@@ -113,4 +113,22 @@
 
 .ontent-block .login .none {
     display: none;
+}
+
+.go-login {
+    color: #268ff6;
+    position: relative;
+    top: 100px;
+    margin-left: 40px;
+    float: left;
+    background-color: #FFF;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: solid 2px #268ff6;
+    text-decoration: none;
+}
+.go-login:hover{
+    color: #268ff6;
+    text-decoration: none;
+    background-color: #cccccc;
 }

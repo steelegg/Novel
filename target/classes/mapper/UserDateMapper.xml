@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fanchen.mapper.UserDateMapper">
+    <insert id="insert" parameterType="com.fanchen.pojo.UserDate" >
+        INSERT INTO user_date (uid,book_id) VALUE (#{uid},#{book_id})
+    </insert>
+
+    <select id="getId" parameterType="int" resultType="com.fanchen.pojo.Book">
+       SELECT * FROM book_date WHERE id in(SELECT book_id FROM user_date WHERE uid=#{id});
+    </select>
+
+    <select id="select" parameterType="com.fanchen.pojo.UserDate" resultType="com.fanchen.pojo.UserDate">
+        select id,uid,book_id from user_date where uid=#{uid} and book_id=${book_id}
+    </select>
+
+</mapper>
