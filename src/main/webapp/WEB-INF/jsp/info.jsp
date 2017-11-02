@@ -25,10 +25,7 @@
     </script>
 </head>
 <body>
-    <h1>${info}id为:${id}</h1>
-    <span id="jumpTo"></span>秒后跳转到首页...
-    <script type="text/javascript">
-        countDown(0,'http://127.0.0.1:8080');
-    </script>
+    <h1>${info}</h1>
+    <a href="/" >回到首页</a>
 </body>
 </html>

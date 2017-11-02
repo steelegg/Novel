@@ -13,7 +13,7 @@ public class User {
     private String password;
     private String declaration;
     private String portrait;
-    private String create_at;
+    private String createAt;
 
     public void setId(int id) {
         this.id = id;
@@ -47,9 +47,6 @@ public class User {
         this.portrait = portrait;
     }
 
-    public void setCreate_at(String create_at) {
-        this.create_at = create_at;
-    }
 
     public int getId() {
         return id;
@@ -83,10 +80,15 @@ public class User {
         return portrait;
     }
 
-    public String getCreate_at() {
-        return create_at;
+
+    public void setCreateAt(String createAt) {
+        this.createAt = createAt;
     }
 
+    public String getCreateAt() {
+
+        return createAt;
+    }
     @Override
     public String toString() {
         return "User{" +
@@ -98,7 +100,8 @@ public class User {
                 ", password='" + password + '\'' +
                 ", declaration='" + declaration + '\'' +
                 ", portrait='" + portrait + '\'' +
-                ", create_at='" + create_at + '\'' +
+                ", createAt='" + createAt + '\'' +
                 '}';
     }
+
 }

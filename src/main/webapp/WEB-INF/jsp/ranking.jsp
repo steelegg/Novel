@@ -19,12 +19,11 @@
 <div class="header">
     <div class="login">
         <div class="login-block">
-            <a class="header-login" href="/l">
-                <li>登录</li>
-            </a>
-            <a class="header-register" href="/r">
-                <li>注册</li>
-            </a>
+            <ol>
+                <li id="header-login"><a href="/l">登录</a></li>
+                <li id="header-register"><a href="/r">注册</a></li>
+                <script src="../static/js/getcookie.js" type="text/javascript"></script>
+            </ol>
         </div>
     </div>
     <div class="menu">

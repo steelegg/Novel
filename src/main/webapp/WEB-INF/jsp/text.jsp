@@ -17,12 +17,11 @@
 <div class="header">
     <div class="login">
         <div class="login-block">
-            <a class="header-login" href="/login">
-                <li>登录</li>
-            </a>
-            <a class="header-register" href="/register">
-                <li>注册</li>
-            </a>
+            <ol>
+                <li id="header-login"><a href="/l">登录</a></li>
+                <li id="header-register"><a href="/r">注册</a></li>
+                <script src="../static/js/getcookie.js" type="text/javascript"></script>
+            </ol>
         </div>
     </div>
     <div class="menu">
@@ -31,30 +30,16 @@
                 <input class="header-input-text" type="text" name="search" placeholder="请输入书名或作者名...">
                 <input class="header-input-submit" value="搜索" type="submit">
             </form>
-            <a href="/">
-                <li>首页</li>
-            </a>
-            <a href="/all?t=1&p=0">
-                <li>玄幻</li>
-            </a>
-            <a href="/all?t=2&p=0">
-                <li>都市</li>
-            </a>
-            <a href="/all?t=4&p=0">
-                <li>武侠</li>
-            </a>
-            <a href="/all?t=5&p=0">
-                <li>科幻</li>
-            </a>
-            <a href="/all?t=3&p=0">
-                <li>历史</li>
-            </a>
-            <a href="/all?t=7&p=0">
-                <li>灵异</li>
-            </a>
-            <a href="/all?t=0&p=0">
-                <li>全部</li>
-            </a>
+           <ol>
+               <li><a href="/">首页</a></li>
+               <li><a href="/all?t=1&p=0">玄幻</a></li>
+               <li><a href="/all?t=2&p=0">都市</a></li>
+               <li><a href="/all?t=3&p=0">历史</a></li>
+               <li><a href="/all?t=4&p=0">武侠</a></li>
+               <li><a href="/all?t=5&p=0">科幻</a></li>
+               <li><a href="/all?t=7&p=0">灵异</a></li>
+               <li><a href="/all?t=0&p=0">全部</a></li>
+           </ol>
         </div>
     </div>
 </div>

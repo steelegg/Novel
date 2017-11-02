@@ -26,6 +26,14 @@ a, li {
     text-align: right;
 }
 
+/*.login-block button{*/
+    /*color: #2e6da4;*/
+    /*background: none;*/
+    /*border:none;*/
+    /*outline: none;*/
+/*}*/
+
+
 .login-block li {
     display: inline;
     padding: 0 0.5rem;

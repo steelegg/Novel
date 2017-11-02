@@ -7,10 +7,6 @@ html {
     font-size: 62.5%;
 }
 
-a, li {
-    color: #FFF;
-    text-decoration: none;
-}
 
 .header {
     height: 6rem;
@@ -34,6 +30,8 @@ a, li {
     color: #313035;
     font-weight: 800;
 }
+
+
 .menu{
     height: 4rem;
     background-color: #3e3d43;

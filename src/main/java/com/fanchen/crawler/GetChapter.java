@@ -3,6 +3,7 @@ package com.fanchen.crawler;
 import com.fanchen.mapper.ChapterMapper;
 import com.fanchen.pojo.Book;
 import com.fanchen.pojo.Chapter;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.net.URL;
@@ -16,13 +17,17 @@ import java.util.regex.Pattern;
  */
 
 class GetChapter {
+
+    public static Logger log = Logger.getLogger(GetChapter.class);
+
     Book getChapter(Book book, int book_num, int old_book_id, BufferedReader in, URLConnection connection, Regex regex, ChapterMapper chapterMapper) {
         URL realUrl = null;
         String line = null;
         String content_url = null;
         String link = "http://www.qb5200.org/xiaoshuo/" + book_num + "/" + old_book_id;
         String sss = null;
-        System.out.println("\n目录链接为:" + link);
+        log.info("\n目录链接为:" + link);
+//        System.out.println("\n目录链接为:" + link);
         int chapter_number = 0;
         Chapter chapter = new Chapter();
         GetContent getcontent = new GetContent();
@@ -64,7 +69,8 @@ class GetChapter {
                         chapter.setBook_id(book.getId());
                         chapter.setChapter_name(m2.group(2));
                         content_url = "http://www.qb5200.org/xiaoshuo/" + book_num + "/" + old_book_id + "/" + m2.group(1);
-                        System.out.println("正在抓取:" + content_url + "\t章节名:" + m2.group(2) + "..");
+//                        log.info("正在抓取:" + content_url + "\t章节名:" + m2.group(2) + "..");
+//                        System.out.println("正在抓取:" + content_url + "\t章节名:" + m2.group(2) + "..");
                         getcontent.getContent(chapter, book, chapter_number, content_url, in, connection, regex, chapterMapper);
                     }
                 }
@@ -79,12 +85,14 @@ class GetChapter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("简介为:" + sb.toString());
+        log.info("简介为:" + sb.toString());
+//        System.out.println("简介为:" + sb.toString());
         book.setIntroduction(sb.toString());
         book.setChapter_number(chapter_number);
         //章节结束的位置等于开始位置加上总章节数
         book.setEnd_id(book.getStart_id() + chapter_number - 1);
-        System.out.println("开始位置为:" + book.getStart_id() + "结束位置为:" + book.getEnd_id());
+        log.info("开始位置为:" + book.getStart_id() + "结束位置为:" + book.getEnd_id());
+//        System.out.println("开始位置为:" + book.getStart_id() + "结束位置为:" + book.getEnd_id());
         return book;
     }
 }

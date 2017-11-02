@@ -17,4 +17,9 @@ public interface BookMapper {
     Book getEnd(int id);
     int sum(RankingType rankingType);
     List<Book> getAll(RankingType rankingType);
+    String getEndChapter(int id);
+    void updateClick(int id);
+    void updateCollection(int id);
+    void updateRecommended(int id);
+    String getName(String book_name);
 }

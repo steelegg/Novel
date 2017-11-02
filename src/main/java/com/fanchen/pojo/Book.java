@@ -12,6 +12,7 @@ public class Book {
     private String last_update_time;
     private String cover;
     private String type;
+    private String end_chapter;
     private int status;
     private int click; //点击
     private int chapter_number;
@@ -32,6 +33,7 @@ public class Book {
                 ", last_update_time='" + last_update_time + '\'' +
                 ", cover='" + cover + '\'' +
                 ", type='" + type + '\'' +
+                ", end_chapter='" + end_chapter + '\'' +
                 ", status=" + status +
                 ", click=" + click +
                 ", chapter_number=" + chapter_number +
@@ -42,6 +44,14 @@ public class Book {
                 ", end_id=" + end_id +
                 ", create_at=" + create_at +
                 '}';
+    }
+
+    public void setEnd_chapter(String end_chapter) {
+        this.end_chapter = end_chapter;
+    }
+
+    public String getEnd_chapter() {
+        return end_chapter;
     }
 
     public void setStart_id(int start_id) {

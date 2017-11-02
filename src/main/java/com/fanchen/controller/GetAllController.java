@@ -1,28 +1,34 @@
 package com.fanchen.controller;
 
 import com.fanchen.mapper.BookMapper;
+import com.fanchen.mapper.UserDateMapper;
 import com.fanchen.pojo.Book;
 import com.fanchen.pojo.RankingType;
+import com.fanchen.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/10/25.
- *
  */
 @Controller
-public class getAllController {
+public class GetAllController {
 
     @Autowired
     @SuppressWarnings("all")
     private BookMapper bookMapper;
+    @Autowired
+    @SuppressWarnings("all")
+    private UserDateMapper userDateMapper;
 
-    @RequestMapping("/all")
+    @RequestMapping(value = "/all",method= RequestMethod.GET)
     public String getAll(String t, String m, String s, String p, Model model) {
         RankingType rankingType = new RankingType();
 

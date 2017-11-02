@@ -14,18 +14,41 @@
     <!--bootstrap-->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <script>
+        function loadXMLDoc(bid) {
+            if(getCookie("id")!==null){
+                var xmlhttp;
+                if (window.XMLHttpRequest) {
+                    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                    xmlhttp=new XMLHttpRequest();
+                }
+                else {
+                    // IE6, IE5 浏览器执行代码
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange=function() {
+                    if (xmlhttp.readyState===4 && xmlhttp.status===200) {
+                        alert("收藏成功");
+//                        document.getElementById("info").innerHTML=xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET","/add?bid="+bid+"&uid="+getCookie("id"),true);
+                xmlhttp.send();
+            }else{
+                alert("请先登录...")
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="header">
     <div class="login">
         <div class="login-block">
-            <a class="header-login" href="/l">
-                <li>登录</li>
-            </a>
-            <a class="header-register" href="/r">
-                <li>注册</li>
-            </a>
+            <ol>
+                <li id="header-login"><a href="/l">登录</a></li>
+                <li id="header-register"><a href="/r">注册</a></li>
+                <script src="../static/js/getcookie.js" type="text/javascript"></script>
+            </ol>
         </div>
     </div>
     <div class="menu">
@@ -110,16 +133,14 @@
                         </div>
                         <div class="result-content-right">
                             <ul>
-                                <li>${b.chapter_number}<span>总章节</span>
-                                <li>
-                                <li>${b.recommended}<span>总推荐</span>
-                                <li>
-                                <li>${b.click}<span>总点击</span>
-                                <li>
+                                <li>${b.chapter_number}<span>总章节</span></li>
+                                <li>${b.recommended}<span>总推荐</span></li>
+                                <li>${b.click}<span>总点击</span></li>
                             </ul>
                             <p>
+                                <span id="info"></span>
                                 <a class="red-but" href="/book?id=${b.id}">书籍详情</a>
-                                <a class="blue-but" href="#">加入书架</a>
+                                <button class="blue-but"  onclick="loadXMLDoc(${b.id})">加入书架</button>
                             </p>
                         </div>
                     </li>
@@ -130,14 +151,14 @@
                 <c:if test="${page==0 && max <=10}">
                 </c:if>
                 <c:if test="${page==0 && max>=11}">
-                    <a href="/all?t=${type}&p=${page+10}">下一页</a>
+                    <a class="dw-page" href="/all?t=${type}&p=${page+10}">下一页</a>
                 </c:if>
                 <c:if test="${page>=10 && max >= page+20}">
-                    <a href="/all?t=${type}&p=${page-10}">上一页</a>
-                    <a href="/all?t=${type}&p=${page+10}">下一页</a>
+                    <a class="up-page" href="/all?t=${type}&p=${page-10}">上一页</a>
+                    <a class="dw-page" href="/all?t=${type}&p=${page+10}">下一页</a>
                 </c:if>
                 <c:if test="${page>=10 && page+10 == max}">
-                    <a href="/all?t=${type}&p=${page-10}">上一页</a>
+                    <a class="up-page" href="/all?t=${type}&p=${page-10}">上一页</a>
                 </c:if>
             </c:if>
 
@@ -145,14 +166,14 @@
                 <c:if test="${page==0 && max <=10}">
                 </c:if>
                 <c:if test="${page==0 && max>=11}">
-                    <a href="/all?t=${type}&m=${method}&s=${sort}&p=${page+10}">下一页</a>
+                    <a class="dw-page" href="/all?t=${type}&m=${method}&s=${sort}&p=${page+10}">下一页</a>
                 </c:if>
                 <c:if test="${page>=10 && max >= page+20}">
-                    <a href="/all?t=${type}&m=${method}&s=${sort}&p=${page-10}">上一页</a>
-                    <a href="/all?t=${type}&m=${method}&s=${sort}&p=${page+10}">下一页</a>
+                    <a class="up-page" href="/all?t=${type}&m=${method}&s=${sort}&p=${page-10}">上一页</a>
+                    <a class="dw-page" href="/all?t=${type}&m=${method}&s=${sort}&p=${page+10}">下一页</a>
                 </c:if>
                 <c:if test="${page>=10 && page+10 == max}">
-                    <a href="/all?t=${type}&m=${method}&s=${sort}&p=${page-10}">上一页</a>
+                    <a class="up-page" href="/all?t=${type}&m=${method}&s=${sort}&p=${page-10}">上一页</a>
                 </c:if>
             </c:if>
 

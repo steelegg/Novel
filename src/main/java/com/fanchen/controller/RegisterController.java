@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created by Administrator on 2017/10/26.
@@ -17,7 +18,7 @@ public class RegisterController {
     @SuppressWarnings("all")
     private UserMapper userMapper;
 
-    @RequestMapping("/r")
+    @RequestMapping(value = "/r",method= RequestMethod.GET)
     public String goLogin() {
         return "register";
     }

@@ -2,6 +2,7 @@ package com.fanchen.crawler;
 
 import com.fanchen.mapper.ChapterMapper;
 import com.fanchen.pojo.Book;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,6 +16,9 @@ import java.util.regex.Pattern;
  * Created by Administrator on 2017/10/25.
  */
 public class GetType {
+
+    public static Logger log = Logger.getLogger(GetType.class);
+
     static String getType(int book_id, BufferedReader in, URLConnection connection, Regex regex) {
         String get_type = "http://www.qb5200.org/book/" + book_id + ".html";
         String line = null;
@@ -34,7 +38,8 @@ public class GetType {
                 }
             }
         } catch (IOException e) {
-            System.out.println("获取书类型出错");
+            log.info("GetType获取类型出错...."+e);
+//            System.out.println("获取书类型出错");
         } finally {
             try {
                 in.close();

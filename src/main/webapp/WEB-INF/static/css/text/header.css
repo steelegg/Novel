@@ -31,11 +31,17 @@ a, li {
 }
 
 .login-block li {
+    font-size: 14px;
     display: inline;
     padding: 0 0.5rem;
     color: #313035;
     font-weight: 800;
 }
+
+.login-block li a{
+    color: #2e6da4;
+}
+
 .menu{
     width: 100%;
     background-color: #3e3d43;

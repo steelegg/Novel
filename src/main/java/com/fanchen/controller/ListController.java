@@ -32,6 +32,8 @@ public class ListController {
         if (id != null) {
             //发送目录
             List<Chapter> list = chapterMapper.getChapters(Integer.parseInt(id));
+            //更新点击数
+            bookMapper.updateClick(Integer.parseInt(id));
             model.addAttribute("chapter", list);
             //发送book信息和简介
             book = bookMapper.selectId(Integer.parseInt(id));

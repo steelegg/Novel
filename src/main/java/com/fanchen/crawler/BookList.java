@@ -3,11 +3,7 @@ package com.fanchen.crawler;
 import com.fanchen.mapper.BookMapper;
 import com.fanchen.mapper.ChapterMapper;
 import com.fanchen.pojo.Book;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.net.URL;
@@ -19,17 +15,11 @@ import java.util.regex.Pattern;
  * Created by Administrator on 2017/10/19.
  * 获取书目录
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:applicationContext.xml")
 public class BookList {
 
-    @Autowired
-    private BookMapper bookMapper;
-    @Autowired
-    private ChapterMapper chapterMapper;
+    public static Logger log = Logger.getLogger(BookList.class);
 
-    @Test
-    public void getList() {
+    public static void getList(ChapterMapper chapterMapper, BookMapper bookMapper) {
         int book_id;
         int book_num;
         String line = null;
@@ -43,8 +33,7 @@ public class BookList {
         Book new_book = new Book();
         GetChapter getchapter = new GetChapter();
         try {
-//            for(int x=1;x<339;x++){
-            for (int x = 1; x < 2; x++) {
+            for (int x = 337; x >1; x--) {
                 long startMili = System.currentTimeMillis();
                 String url = "http://www.qb5200.org/top/allvisit_" + x + ".html";
                 URL realUrl = new URL(url);
@@ -69,17 +58,22 @@ public class BookList {
                         //m1.group(1) 是书类型
                         //m1.group(2) 是书id
                         //m1.group(3) 是书名
+                        book_name = m1.group(3);
+                        if (bookMapper.getName(book_name)!=null){
+                            //如果书存在跳出循环
+                            continue;
+                        }
                         book_id = Integer.parseInt(m1.group(2));
                         book_num = Integer.parseInt(m1.group(1));
-                        book_name = m1.group(3);
+
                         cover = "http://www.qb5200.org/files/article/image/" + book_num + "/" + book_id + "/" + book_id + "s.jpg";
                         //输出类型
                         type = GetType.getType(book_id, in, connection, regex);
-                        System.out.println("类型:" + type);
-
-                        if (type==null){
+//                        System.out.println("类型:" + type);
+                        log.info("类型:" + type);
+                        if (type == null) {
                             book.setType("未知");
-                        }else{
+                        } else {
                             book.setType(type);
                         }
                         book.setBook_name(book_name);
@@ -87,8 +81,8 @@ public class BookList {
 
                         //这里先插入数据获得返回的id
                         bookMapper.insert(book);
-
-                        System.out.println("正在爬取id为" + book.getId() + "的书");
+                        log.info("正在爬取id为" + book.getId() + "的书");
+//                        System.out.println("正在爬取id为" + book.getId() + "的书");
                         new_book = getchapter.getChapter(book, book_num, book_id, in, connection, regex, chapterMapper);
 
                     }
@@ -105,16 +99,12 @@ public class BookList {
                 }
 
                 long endMili = System.currentTimeMillis();
-                System.out.println("第" + x + "页" + "本页耗时为:" + (endMili - startMili) + "毫秒");
-                try {
-                    //等待1秒
-                    Thread.sleep(1000);
-                } catch (InterruptedException ie) {
-                    ie.printStackTrace();
-                }
+                log.info("第" + x + "页" + "本页耗时为:" + (endMili - startMili) + "毫秒");
+//                System.out.println("第" + x + "页" + "本页耗时为:" + (endMili - startMili) + "毫秒");
             }
         } catch (Exception e) {
-            System.out.println("发送GET请求出现异常！" + e);
+            log.error("错误位置为BookList" + e);
+//            System.out.println("发送GET请求出现异常！" + e);
             e.printStackTrace();
         } finally {
             try {

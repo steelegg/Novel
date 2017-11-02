@@ -3,12 +3,18 @@ package com.fanchen.crawler;
 import com.fanchen.mapper.ChapterMapper;
 import com.fanchen.pojo.Book;
 import com.fanchen.pojo.Chapter;
+import org.apache.log4j.Logger;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,10 +24,13 @@ import java.util.regex.Pattern;
  */
 
 class GetContent {
+    public static Logger log = Logger.getLogger(GetContent.class);
+
     void getContent(Chapter chapter, Book book, int chapter_number, String url, BufferedReader in, URLConnection connection, Regex regex, ChapterMapper chapterMapper) {
         URL realUrl = null;
         String line = null;
         StringBuilder sb = new StringBuilder();
+        int i = 0;
         try {
             realUrl = new URL(url);
             connection = realUrl.openConnection();
@@ -40,11 +49,11 @@ class GetContent {
             }
             chapter.setContent(sb.toString());
             chapterMapper.insert(chapter);
-
-            if (chapter_number==1){
+            if (chapter_number == 1) {
                 book.setStart_id(chapter.getId());
             }
         } catch (IOException e) {
+            log.error("获取正文错误..." + e);
             e.printStackTrace();
         }
     }
