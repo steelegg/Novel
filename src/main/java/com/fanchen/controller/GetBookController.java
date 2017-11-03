@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created by Administrator on 2017/10/30.
- *
+ * 小说爬虫控制器
  */
 @Controller
 public class GetBookController {

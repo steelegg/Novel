@@ -49,8 +49,10 @@ public class LoginController {
                 model.addAttribute("info", "你登录失败了");
                 return "info";
             }
+        }else{
+            model.addAttribute("info","错误,用户名或密码为空");
+            return "info";
         }
-        return "info";
     }
 
 }

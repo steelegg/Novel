@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2017/10/25.
+ * 类型搜索加排序
  */
 @Controller
 public class GetAllController {

@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2017/10/24.
+ * 小说目录页
  */
 @Controller
 public class ListController {
@@ -38,6 +39,9 @@ public class ListController {
             //发送book信息和简介
             book = bookMapper.selectId(Integer.parseInt(id));
             model.addAttribute("book", book);
+        }else{
+            model.addAttribute("对不起找不到这本书");
+            return "info";
         }
         return "directory";
     }

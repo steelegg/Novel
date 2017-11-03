@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Administrator on 2017/10/30.
+ * 用户收藏功能
  */
 @Controller
 public class AddBookController {

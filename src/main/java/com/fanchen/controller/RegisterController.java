@@ -31,10 +31,12 @@ public class RegisterController {
             user.setMobile(Long.parseLong(mobile));
             user.setPassword(password);
             userMapper.insert(user);
+            model.addAttribute("info","你已经成功注册");
+            model.addAttribute("id",user.getId());
+            return "info";
+        }else{
+            model.addAttribute("info","对不起,用户名或密码为空");
+            return "info";
         }
-        model.addAttribute("info","你已经成功注册");
-        model.addAttribute("id",user.getId());
-
-        return "info";
     }
 }

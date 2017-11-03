@@ -33,6 +33,8 @@ public class ResultController {
             b.setAuthor("%" + search + "%");
             List<Book> list = bookMapper.search(b);
             model.addAttribute("book", list);
+        }else {
+
         }
         return "result";
     }
